@@ -63,7 +63,7 @@ module.exports.createProduct = async (req, res) => {
   if (!valid) {
     return res.status(422).json({
       err: null,
-      msg: 'name(String) and price(Number) are required fields.',
+      msg: 'well hello',
       data: null
     });
   }
