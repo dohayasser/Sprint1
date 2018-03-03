@@ -1,56 +1,45 @@
 <template>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="card">
-          <paper-table :title="table1.title" :sub-title="table1.subTitle" :data="table1.data" :columns="table1.columns">
+    <div class="container">
+          <table class="table table-striped table-borders">
+            <thead>
+<th> Name </th>
+<th> Price </th>
+<th> Created At </th>
+<th> Updated At </th>
+<th> Seller Name </th>
+            </thead>
+            <tbody>
+            <tr v-for="product_alias in Product" >
+            <td> {{ product_alias.id}}</td>
+            <td> {{ product_alias.name}}</td>
+            <td> {{ product_alias.price}}</td>
+            <td> {{ product_alias.createdAt}}</td>
+            <td> {{ product_alias.updatedA}}</td>
 
-          </paper-table>
-        </div>
-      </div>
-
+            </tr>
+            </tbody>
+          </table>
     </div>
 </template>
 <script>
-  import PaperTable from 'components/UIComponents/PaperTable.vue'
-  const tableColumns = ['Id', 'Name', 'Price', 'CreatedAt', 'UpdatedAt', 'SellerName']
-  const tableData = [{
-    id: 1,
-    name: 'Dakota Rice',
-    price: '$36.738',
-    createdat: '15/2/2018',
-    updatedat: '16/2/2018',
-    sellername: 'Mo'
-  },
-  {
-    id: 2,
-    name: 'Minerva Hooper',
-    price: '$36.738',
-    createdat: '15/2/2018',
-    updatedat: '16/2/2018',
-    sellername: 'Mo'
-  }]
+import axios from 'axios'
 
-  export default {
-    components: {
-      PaperTable
-    },
-    data () {
-      return {
-        table1: {
-          title: 'Stripped Table',
-          subTitle: 'Here is a subtitle for this table',
-          columns: [...tableColumns],
-          data: [...tableData]
-        },
-        table2: {
-          title: 'Table on Plain Background',
-          subTitle: 'Here is a subtitle for this table',
-          columns: [...tableColumns],
-          data: [...tableData]
-        }
-      }
+export default{
+  data () {
+    return {
+      Product: []
     }
-  }
+  },
+  mounted () {
+    axios.get('http://localhost:3000/api/product/getProducts')
+      .then((response) => {
+        console.log(response.data)
+        this.Product = response.data
+      })
+  .catch((error) => {
+    console.log(error)
+  })
+  }}
 
 </script>
 <style>

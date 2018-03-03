@@ -12,6 +12,12 @@ const productSchema = mongoose.Schema({
     required: true,
     min: 0
   },
+  seller: {
+    type: String,
+    required: true,
+    trim: true,
+    lowercase: true,
+  },
   createdAt: {
     type: Date,
     default: Date.now

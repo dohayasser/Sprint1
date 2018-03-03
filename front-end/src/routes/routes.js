@@ -12,7 +12,8 @@ import Typography from 'src/components/Dashboard/Views/Typography.vue'
 import TableList from 'src/components/Dashboard/Views/TableList.vue'
 import Login from 'src/components/Dashboard/Views/Login/Login.vue'
 import Register from 'src/components/Dashboard/Views/Login/Register.vue'
-import Store from 'src/components/Dashboard/Views/Store.vue'
+import Store from 'src/components/Dashboard/Views/Store/Store.vue'
+// import Products from 'src/components/Dashboard/Views/Store/StoreProducts.vue'
 
 const routes = [
   {
@@ -51,31 +52,37 @@ const routes = [
         name: 'stats',
         component: UserProfile
       },
-      // {
-      //   path: 'notifications',
-      //   name: 'notifications',
-      //   component: Notifications
-      // },
-      // {
-      //   path: 'icons',
-      //   name: 'icons',
-      //   component: Icons
-      // },
-      // {
-      //   path: 'maps',
-      //   name: 'maps',
-      //   component: Maps
-      // },
-      // {
-      //   path: 'typography',
-      //   name: 'typography',
-      //   component: Typography
-      // },
+      {
+        path: 'notifications',
+        name: 'notifications',
+        component: Notifications
+      },
+      {
+        path: 'icons',
+        name: 'icons',
+        component: Icons
+      },
+      {
+        path: 'maps',
+        name: 'maps',
+        component: Maps
+      },
+      {
+        path: 'typography',
+        name: 'typography',
+        component: Typography
+      },
       {
         path: 'table-list',
         name: 'table-list',
         component: TableList
       }
+      // ,
+      // {
+      //   path: 'store-products',
+      //   name: 'store-products',
+      //   component: Products
+      // }
     ]
   },
   { path: '*', component: NotFound }

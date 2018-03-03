@@ -32,6 +32,11 @@ const SidebarStore = {
       name: 'Table List',
       icon: 'ti-view-list-alt',
       path: '/admin/table-list'
+    },
+    {
+      name: 'Store Products',
+      icon: 'ti-user',
+      path: '/admin/store-products'
     }
     // {
     //   name: 'Typography',

@@ -24,9 +24,9 @@ module.exports.getProduct = async (req, res) => {
   });
 };
 
-module.exports.getProducts = async (req, res) => {
+module.exports.getProducts = async (req, response) => {
   const products = await Product.find({}).exec();
-  res.status(200).json({
+  response.status(200).json({
     err: null,
     msg: 'Products retrieved successfully.',
     data: products
@@ -54,14 +54,14 @@ module.exports.getProductsBelowPrice = async (req, res) => {
   });
 };
 
-module.exports.createProduct = async (req, res) => {
+module.exports.createProduct = async (req, response) => {
   const valid =
     req.body.name &&
     Validations.isString(req.body.name) &&
     req.body.price &&
     Validations.isNumber(req.body.price);
   if (!valid) {
-    return res.status(422).json({
+    return response.status(422).json({
       err: null,
       msg: 'name(String) and price(Number) are required fields.',
       data: null
@@ -72,7 +72,7 @@ module.exports.createProduct = async (req, res) => {
   delete req.body.updatedAt;
 
   const product = await Product.create(req.body);
-  res.status(201).json({
+  response.status(201).json({
     err: null,
     msg: 'Product was created successfully.',
     data: product
